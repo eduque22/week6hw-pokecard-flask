@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == 'auth-success' %}
+                <div class="container">
+                    {{ msg }}
+                    <button type="button" class="close" data-dismiss="alert" onclick="this.parentElement.style.display='none'">&times;</button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<header class="hero-section">
+    <h3 class="header-text">Welcome to Pokevelopers! {{ current_user.username }}</h3>
+    <main class="container card_form">
+        <div class="row">
+            <aside class="col-12 col-md-6">
+                <h2>Upload Your Pokemon Card!</h2>
+                {% include 'card_form.html' %}
+             </aside>
+        </div>
+    </main>
+</header>
+
+<div class="container">
+    <h3>Here are your profile details!</h3>
+    <ul class="list-group">
+        <li class="list-group-item">Email: {{ current_user.email }}</li>
+        <li class="list-group-item">Token: {{ current_user.token }}</li>
+    </ul>
+    <div class="row">
+        {% for card in cards %}
+        <div class="card" style="width: 18rem;">
+            <img src="https://image.petmd.com/files/shutterstock_423982405.jpg" class="card-img-top" alt="cute puppy paw">
+            <div class="card-body">
+            <h5 class="card-title">{{ card.name }}</h5>
+            <p class="card-text">{{ card.type }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ card.series }}</li>
+            <li class="list-group-item">{{ card.year }}</li>
+            <li class="list-group-item">{{ card.collector_card_number }}</li>
+            <li class="list-group-item">{{ card.is_graded }}</li>
+            <li class="list-group-item">{{ card.grade }}</li>
+            <li class="list-group-item">{{ card.description }}</li>
+            <li class="list-group-item">{{ card.for_sale }}</li>
+            </ul>
+            <div class="card-body">
+            <a href="#" class="card-link">Update Card</a>
+            <a href="#" class="card-link">Delete Card</a>
+            </div>
+        </div>
+        {% endfor %} 
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,1 @@
+gunicorn 'pokecard_inventory:app'

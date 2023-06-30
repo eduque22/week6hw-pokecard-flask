@@ -1,0 +1,43 @@
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset class="name-field">
+            {{ form.name.label }}
+            {{ form.name(class='form-control', placeholder='Name') }}
+        </fieldset>
+        <fieldset class="type-field">
+            {{ form.type.label }}
+            {{ form.type(class='form-control', placeholder='Type') }}
+        </fieldset>
+        <fieldset class="series-field">
+            {{ form.series.label }}
+            {{ form.series(class='form-control', placeholder='Series') }}
+        </fieldset>
+        <fieldset class="year-field">
+            {{ form.year.label }}
+            {{ form.year(class='form-control', placeholder='Year') }}
+        </fieldset>
+        <fieldset class="collector_num-field">
+            {{ form.collector_card_number.label }}
+            {{ form.collector_card_number(class='form-control', placeholder='Collector Card Number') }}
+        </fieldset>
+        <fieldset class="graded-field">
+            {{ form.is_graded.label }}
+            {{ form.is_graded(class='form-control', placeholder='Is Graded?') }}
+        </fieldset>
+        <fieldset class="grade-field">
+            {{ form.grade.label }}
+            {{ form.grade(class='form-control', placeholder='Grade') }}
+        </fieldset>
+        <fieldset class="description-field">
+            {{ form.description.label }}
+            {{ form.description(class='form-control', placeholder='Description') }}
+        </fieldset>
+        <fieldset class="sale-field">
+            {{ form.for_sale.label }}
+            {{ form.for_sale(class='form-control', placeholder='For Sale?') }}
+        </fieldset>
+
+        {{ form.submit_button(class='btn btn-primary btn-block mt-2') }}
+    </div>
+</form>
